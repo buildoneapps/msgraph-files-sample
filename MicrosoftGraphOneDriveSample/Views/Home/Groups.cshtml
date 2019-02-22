@@ -1,0 +1,46 @@
+@model System.Collections.Generic.List<MicrosoftGraphOneDriveTest.Models.Group>
+
+@{
+    ViewBag.Title = "Grupos";
+    Layout = "_Layout";
+}
+<div class="form-group m-t-15">
+    <label class="control-label">Grupos</label>
+    <a type="button" class="upload-button" href="Home/Upload" > Upload</a>
+    <table class="table table-bordered table-striped table-condensed table-hover">
+        <thead>
+        <tr>
+            <th>Nome</th>
+            <th>Description</th>
+        </tr>
+        </thead>
+        <colgroup>
+            <col span="1" style="width: 25%;">
+            <col span="1" style="width: 50%;">
+        </colgroup>
+        <tbody>
+
+        @{
+            if (Model != null && Model.Any())
+            {
+                foreach (var v in Model)
+                {
+                    <tr>
+                        <td>@v.DisplayName</td>
+                        <td>@v.Description</td>
+                       
+                    </tr>    
+                }
+            }
+@*             else *@
+@*             { *@
+@*                 <td colspan="3"> *@
+@*                     <div id="no-itens-piece" style="text-align: center; padding: 20px; color: #DDDDDD;"> *@
+@*                         <img style="width: 50px;" src="~/images/box_empty.png"/><label style="padding: 10px;">Nenhum anexo adicionado!</label> *@
+@*                     </div> *@
+@*                 </td> *@
+@*             } *@
+        }
+        </tbody>
+    </table>
+</div>

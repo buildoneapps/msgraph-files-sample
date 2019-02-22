@@ -1,0 +1,59 @@
+﻿@model List<FileViewModel>
+    
+    @{
+        ViewBag.Title = "HD Virtual";
+        Layout = "_Layout";
+    }
+
+
+
+
+<div class="form-group m-t-15">
+    <label class="control-label">Arquivos</label>
+    <a type="button" class="upload-button" href="Home/Upload" > Upload</a>
+    <table class="table table-bordered table-striped table-condensed table-hover">
+        <thead>
+        <tr>
+            <th>Nome</th>
+            <th>Tamanho</th>
+            <th></th>
+        </tr>
+        </thead>
+        <colgroup>
+            <col span="1" style="width: 25%;">
+            <col span="1" style="width: 50%;">
+        </colgroup>
+        <tbody>
+
+        @{
+            if (Model != null && Model.Any())
+            {
+                foreach (var v in Model)
+                {
+                    <tr>
+                        <td>@v.Name</td>
+                        <td>@v.Size</td>
+                        <td style="text-align: center;">
+                            <a target="_blank" href="@v.WebUrl" class="btn-sm btn-icon btn-primary">
+                                <i class="fa-download"> Abrir </i>
+                            </a>
+                            <a class="share-button btn-sm btn-icon btn-primary" data-id="@v.Id" >
+                                <i class="fa-download"> Compartilhar </i>
+                            </a>
+                            
+                        </td>
+                    </tr>    
+                }
+            }
+@*             else *@
+@*             { *@
+@*                 <td colspan="3"> *@
+@*                     <div id="no-itens-piece" style="text-align: center; padding: 20px; color: #DDDDDD;"> *@
+@*                         <img style="width: 50px;" src="~/images/box_empty.png"/><label style="padding: 10px;">Nenhum anexo adicionado!</label> *@
+@*                     </div> *@
+@*                 </td> *@
+@*             } *@
+        }
+        </tbody>
+    </table>
+</div>
